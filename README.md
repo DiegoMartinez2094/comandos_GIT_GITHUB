@@ -105,6 +105,7 @@ git add archivo.txt
 git add directorio
 ```
 
+* **`git reset <nombre-archivo>`:** El comando `git reset` para sacar un archivo del `git add .`
 * **`git commit`:** El comando `git commit` crea una instantánea de los cambios en el área de preparación. El mensaje del commit describe los cambios realizados. Para crear un commit con un mensaje, puedes utilizar el siguiente comando:
 
 ```
@@ -117,6 +118,7 @@ git commit -m "Mensaje del commit"
 
   `git merge rama_origen -m "Mensaje de commit"`
 * **`git push`:** El comando `git push` publica los cambios en un repositorio remoto. Los repositorios remotos son repositorios de Git que se almacenan en un servidor.
+* `git checkout -- .` nos redirige la informacion al último commit que hicimos
 
 ---
 
