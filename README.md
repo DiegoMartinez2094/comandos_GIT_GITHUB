@@ -106,6 +106,7 @@ git add directorio
 ```
 
 * **`git reset <nombre-archivo>`:** El comando `git reset` para sacar un archivo del `git add .`
+* `git diff `para mostrar los cambios del archivo 
 * **`git commit`:** El comando `git commit` crea una instantánea de los cambios en el área de preparación. El mensaje del commit describe los cambios realizados. Para crear un commit con un mensaje, puedes utilizar el siguiente comando:
 
 ```
