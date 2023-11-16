@@ -22,11 +22,19 @@ Instalacion de GIT:
 
 `cd .. ` direcciona a una carpeta exterior
 
-`cat archivo.txt ` abrir un archivo en la terminal 
+`cat archivo.txt ` abrir un archivo en la terminal
 
 `New-Item -Path /home/usuario/archivo.txt  ` creará un archivo con el nombre `archivo.txt` en el directorio `/home/usuario`:
 
-`New-Item archivo.txt ` crea un archivo.txt en la pasición actual 
+`New-Item archivo.txt ` crea un archivo.txt en la pasición actual
+
+`New-Item -Path archivo.txt -Type File -Value "hola"` crea un archivo.txt con un hola dentro
+
+`New-Item  archivo2.txt -Value "hola2" `   forma abreviada
+
+`echo "hola" >> archivo.txt ` y si ya estaba previamente creado el archivo .txt vacio y quiere agg texto
+
+`Set-Content -Path archivo.txt -Value "hola adios"` para editar el contenido de este archivo.txt
 
 `rm`: Eliminar un archivo
 
@@ -106,7 +114,8 @@ git add directorio
 ```
 
 * **`git reset <nombre-archivo>`:** El comando `git reset` para sacar un archivo del `git add .`
-* `git diff `para mostrar los cambios del archivo 
+* `git diff `para mostrar los cambios del archivo entre dos commits,
+  ejemplo : `git diff 2154542187455df458df54d5 a5s4d5sf8sdf5sdf45sdfd `
 * **`git commit`:** El comando `git commit` crea una instantánea de los cambios en el área de preparación. El mensaje del commit describe los cambios realizados. Para crear un commit con un mensaje, puedes utilizar el siguiente comando:
 
 ```
@@ -180,3 +189,23 @@ git reset --hard 2506cd65ebb0e85387350ae392dbef626e06964c  = elimina los commits
 git push origin -f = envia los cambios al repositorio remoto,
 
 si es a una rama especifica rama  (prueba):  git push origin prueba -f
+
+---
+
+## Viajar entre commits:
+
+para viajar entre commits
+
+`git log` para ver todos los commits con su respectivo **hash ** o número amarillo
+
+![1700147262760](image/README/1700147262760.png)
+
+podemos ver que hay dos commits el más reciente siempre es el de arriba, vamos a viajar al antiguo
+
+`git checkout 723ec2bf1bc23943aad69b859e5f69f235fb0945` viajamos al antiguo 
+
+El mensaje indica que ha cambiado a un commit específico con el mensaje "hola en archivo.txt". Ahora está en un estado de HEAD desconectado, lo que significa que no está actualmente en una rama. Puede realizar cambios en sus archivos y confirmarlos, pero estos cambios no estarán asociados con ninguna rama. Puede crear una nueva rama para conservar los commits que realice o puede deshacer el cambio al estado de HEAD desconectado.
+
+`git switch -` para salir del estado de HEAD desconectado y volver al último commit en la rama que estaba 
+
+![1700148502142](image/README/1700148502142.png)
