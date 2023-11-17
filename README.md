@@ -202,10 +202,36 @@ para viajar entre commits
 
 podemos ver que hay dos commits el más reciente siempre es el de arriba, vamos a viajar al antiguo
 
-`git checkout 723ec2bf1bc23943aad69b859e5f69f235fb0945` viajamos al antiguo 
+`git checkout 723ec2bf1bc23943aad69b859e5f69f235fb0945` viajamos al antiguo
 
 El mensaje indica que ha cambiado a un commit específico con el mensaje "hola en archivo.txt". Ahora está en un estado de HEAD desconectado, lo que significa que no está actualmente en una rama. Puede realizar cambios en sus archivos y confirmarlos, pero estos cambios no estarán asociados con ninguna rama. Puede crear una nueva rama para conservar los commits que realice o puede deshacer el cambio al estado de HEAD desconectado.
 
-`git switch -` para salir del estado de HEAD desconectado y volver al último commit en la rama que estaba 
+`git switch -` para salir del estado de HEAD desconectado y volver al último commit en la rama que estaba
 
 ![1700148502142](image/README/1700148502142.png)
+
+## Repositorio Remoto
+
+En términos más técnicos, `git fetch` crea una nueva rama local llamada `FETCH_HEAD` que apunta a la última confirmación del repositorio remoto. Esta rama se puede utilizar para ver los cambios remotos sin fusionarlos con la rama actual.
+
+`git pull` es una combinación de `git fetch` y `git merge`. Primero, ejecuta `git fetch` para descargar los cambios del repositorio remoto. Luego, ejecuta `git merge` para fusionar los cambios con la rama actual.
+
+En general, `git fetch` es una buena opción si desea ver los cambios remotos sin fusionarlos con la rama actual. `git pull` es una buena opción si desea fusionar los cambios remotos con la rama actual.
+
+**Ejemplos**
+
+Para ver los cambios remotos sin fusionarlos con la rama actual, podemos ejecutar el siguiente comando:
+
+```
+git fetch origin main
+```
+
+Este comando descargará los cambios de la rama `main` del repositorio remoto llamado `origin`. Los cambios se almacenarán en la rama local `FETCH_HEAD`.
+
+Para fusionar los cambios remotos con la rama actual, podemos ejecutar el siguiente comando:
+
+```
+git pull origin main
+```
+
+Este comando descargará los cambios de la rama `main` del repositorio remoto llamado `origin`. Luego, fusionará los cambios con la rama actual.
