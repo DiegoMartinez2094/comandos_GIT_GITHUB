@@ -212,6 +212,34 @@ El mensaje indica que ha cambiado a un commit específico con el mensaje "hola e
 
 ## Repositorio Remoto
 
+`git remote add origin https://github.com/DiegoMartinez2094/git_remotee.git`
+
+`git remote rm origin` para eliminar la seleccion del repositorio remoto en el repositorio local
+
+selecciona el repositorio remoto, ojo debe estar en la carpeta del repositorio local.
+
+para editar el repositorio remoto: 
+
+`git remote set-url https://github.com/DiegoMartinez2094/git_remotee.git`
+
+`git remote -v` verifia si ya seleccioné el repositorio remoto
+
+---
+
+`git pull origin main`   para realizar un pull de un repositorio local a uno remoto (traer los archivos remotos)
+
+para hacerlo de manera forzada:
+
+`git pull origin main-- allow-unrelated-histories` indica que debe mezclar las historias tanto remotas como locales.
+
+---
+
+`git push --set-upstream origin MASTER` para subir los cambios al repositorio remoto:
+
+En el caso del comando `git push --set-upstream origin MASTER`, se está indicando a Git que asocie la rama local `MASTER` con la rama remota `origin`. Esto significa que cuando se ejecute el comando `git push`, los cambios realizados en la rama local `MASTER` se enviarán a la rama remota `origin`.
+
+---
+
 En términos más técnicos, `git fetch` crea una nueva rama local llamada `FETCH_HEAD` que apunta a la última confirmación del repositorio remoto. Esta rama se puede utilizar para ver los cambios remotos sin fusionarlos con la rama actual.
 
 `git pull` es una combinación de `git fetch` y `git merge`. Primero, ejecuta `git fetch` para descargar los cambios del repositorio remoto. Luego, ejecuta `git merge` para fusionar los cambios con la rama actual.
