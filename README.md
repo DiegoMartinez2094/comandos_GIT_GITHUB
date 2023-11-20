@@ -218,7 +218,7 @@ El mensaje indica que ha cambiado a un commit específico con el mensaje "hola e
 
 selecciona el repositorio remoto, ojo debe estar en la carpeta del repositorio local.
 
-para editar el repositorio remoto: 
+para editar el repositorio remoto:
 
 `git remote set-url https://github.com/DiegoMartinez2094/git_remotee.git`
 
@@ -263,3 +263,193 @@ git pull origin main
 ```
 
 Este comando descargará los cambios de la rama `main` del repositorio remoto llamado `origin`. Luego, fusionará los cambios con la rama actual.
+
+---
+
+## GIT GREP
+
+El comando `git grep` se utiliza para buscar texto en los archivos de un repositorio Git. Puede utilizarse para encontrar líneas de código, archivos o cualquier otro patrón específico en un proyecto.
+
+El comando `git grep` tiene el siguiente formato:
+
+```
+git grep <texto>
+```
+
+Donde `<texto>` es el texto que se desea buscar.
+
+*Por ejemplo*, el siguiente comando buscará la palabra `"adios"` en todos los archivos del repositorio:
+
+```
+git grep "adios"
+```
+
+`PS C:\Users\Diego martinez\OneDrive\Escritorio\NuevaCarpeta> git grep adios`
+`archivo.txt:adiosito
+ archivo2.txt:adios
+ archivo2.txt:adios `
+
+me indica que la palabra adios se encuentra en los dos archivos y dos veces en el archivo2.txt
+
+---
+
+
+
+## GIT LOG
+
+El comando `git log` sirve para mostrar el historial de commits de un repositorio Git. El argumento `–oneline` comprime la salida del comando `git log` en una sola línea por commit.
+
+La salida del comando `git log --oneline` tiene el siguiente formato:
+
+```
+<hash-commit> <mensaje-comit>
+```
+
+Por ejemplo, la siguiente salida del comando `git log --oneline` muestra los últimos cinco commits de un repositorio:
+
+```
+4477a20 [2023-11-19 10:00:00] Actualización del README
+702282c [2023-11-18 12:00:00] Corrección de un error
+c770834 [2023-11-17 14:00:00] Añadido un nuevo archivo
+1234567 [2023-11-16 16:00:00] Creación del proyecto
+```
+
+El hash-commit es un identificador único para cada commit. El mensaje-comit es una breve descripción de los cambios realizados en el commit.
+
+---
+
+## GIT REFLOG
+
+El comando `git reflog` sirve para mostrar el historial de cambios de los punteros de referencia (`refs`) en un repositorio Git. Los punteros de referencia son los objetos que indican la ubicación de los commits en el historial.
+
+El comando `git reflog` puede utilizarse para ver los cambios realizados en los punteros de referencia, como los cambios realizados al cambiar de rama, al fusionar ramas o al mover commits. También puede utilizarse para recuperar commits que se hayan perdido o eliminado accidentalmente.
+
+El comando `git reflog` tiene dos modos principales:
+
+* **`–all`:** Este modo muestra todos los cambios realizados en los punteros de referencia, incluidos los cambios realizados en ramas remotas.
+* **`–branches`:** Este modo muestra solo los cambios realizados en los punteros de referencia de las ramas locales.
+
+---
+
+
+
+# Git reset
+
+El comando `git reset` sirve para restablecer el estado de un repositorio Git. Puede utilizarse para deshacer cambios, volver a un estado anterior o preparar un repositorio para una fusión.
+
+El comando `git reset` tiene tres modos principales:
+
+* **`–soft`:** Este modo solo restablece el índice de cambios, pero no los archivos del directorio de trabajo. Esto significa que los cambios se pueden volver a aplicar fácilmente con `git checkout`.
+* **`–mixed`:** Este modo restablece el índice de cambios y los archivos del directorio de trabajo. Sin embargo, los cambios que se hayan realizado en el directorio de trabajo después del último commit se conservan.
+* **`–hard`:** Este modo restablece el índice de cambios, los archivos del directorio de trabajo y la historia de commits. Esto significa que todos los cambios realizados después del commit especificado se pierden.
+
+EJEMPLO:
+
+primero ejecutamos el comando `git reflog`:
+
+![1700446095816](image/README/1700446095816.png)
+
+tenemos hash y heads, copiamos el head de donde queremos volver:
+
+`git reset --HARD 3a62088` con este comando volvemos al head 3
+
+---
+
+## git shortlog
+
+El comando `git shortlog` se utiliza para mostrar un resumen del historial de commits de un repositorio Git. El resumen incluye la cantidad de commits realizados por cada autor, junto con el título de cada commit.
+
+El comando `git shortlog` tiene el siguiente formato:
+
+```
+git shortlog [<opciones>]
+```
+
+Las opciones más comunes del comando `git shortlog` son:
+
+* **`-n`:** Muestra solo los autores con más commits.
+* **`-s`:** Muestra la cantidad de commits en orden descendente.
+* **`--since`:** Muestra los commits realizados desde una fecha determinada.
+* **`--until`:** Muestra los commits realizados hasta una fecha determinada.
+
+El comando `git shortlog -sn --all`  mostrando solo el autor y la cantidad de commits realizados por cada autor
+
+El comando `git shortlog ` se utiliza para mostrar un resumen del historial de commits de un repositorio Git con su respetivo autor.
+
+**`git shortlog -sn --all --no-merge`**  muestra cuantos commit han hecho cada miembros quitando los eliminados sin los merges
+
+---
+
+## GIT BLAME
+
+El comando `git blame` se utiliza para mostrar quién modificó cada línea de un archivo en un repositorio Git. La salida del comando `git blame` incluye el hash del commit que modificó la línea, el nombre del autor del commit y la fecha y hora del commit.
+
+El comando `git blame` tiene el siguiente formato:
+
+```
+git blame [<archivo>]
+```
+
+Donde `<archivo>` es el archivo que se desea analizar.
+
+Por ejemplo, el siguiente comando mostrará quién modificó cada línea del archivo `README.md` en el repositorio actual:
+
+```
+git blame README.md
+```
+
+La salida del comando `git blame` tendrá el siguiente formato:
+
+```
+<hash-commit> <autor> <fecha> <hora> <línea>
+```
+
+Por ejemplo, la siguiente salida del comando `git blame` muestra que la línea 1 del archivo `README.md` fue modificada por el autor "juan" en el commit `4477a20`, el 19 de noviembre de 2023 a las 10:00:00:
+
+```
+4477a20 juan 2023-11-19 10:00:00 1
+```
+
+---
+
+## GIT HELP
+
+El comando `git help` se utiliza para obtener ayuda sobre los comandos de Git. El comando `git help` tiene el siguiente formato:
+
+```
+git help [<comando>]
+```
+
+Donde `<comando>` es el comando sobre el que se desea obtener ayuda.
+
+Por ejemplo, el siguiente comando mostrará la ayuda para el comando `git commit`:
+
+```
+git help commit
+```
+
+La salida del comando `git help` incluirá información sobre el uso del comando, así como ejemplos de cómo utilizarlo.
+
+El comando `git help` también tiene una serie de opciones que permiten personalizar la salida. Por ejemplo, la opción `-a` muestra la ayuda para todos los comandos, y la opción `-g` muestra la ayuda para todos los guías.
+
+Aquí hay algunos ejemplos de cómo se puede utilizar el comando `git help`:
+
+* **Para obtener ayuda sobre un comando específico:**
+
+```
+git help commit
+```
+
+* **Para obtener ayuda sobre todos los comandos:**
+
+```
+git help -a
+```
+
+* **Para obtener ayuda sobre todos los guías:**
+
+```
+git help -g
+```
+
+El comando `git help` es una herramienta útil para aprender a utilizar los comandos de Git.
